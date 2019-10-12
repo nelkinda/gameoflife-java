@@ -9,21 +9,21 @@ import static java.util.stream.Collectors.joining;
 public interface Rules {
     Rules ConwayRules = standardRules(of(2, 3), of(3));
 
-    static Rules standardRules(final Set<Integer> survive, final Set<Integer> born) {
+    static Rules standardRules(final Set<Integer> liveNeighborsForSurvival, final Set<Integer> liveNeighborsForBirth) {
         return new Rules() {
             @Override
-            public boolean survives(final int neighbors) {
-                return survive.contains(neighbors);
+            public boolean survives(final int liveNeighbors) {
+                return liveNeighborsForSurvival.contains(liveNeighbors);
             }
 
             @Override
-            public boolean born(final int neighbors) {
-                return born.contains(neighbors);
+            public boolean born(final int liveNeighbors) {
+                return liveNeighborsForBirth.contains(liveNeighbors);
             }
 
             @Override
             public String toString() {
-                return "R " + toString(survive) + "/" + toString(born);
+                return "R " + toString(liveNeighborsForSurvival) + "/" + toString(liveNeighborsForBirth);
             }
 
             private String toString(final Set<Integer> set) {
@@ -32,7 +32,7 @@ public interface Rules {
         };
     }
 
-    boolean survives(int neighbors);
+    boolean survives(int liveNeighbors);
 
-    boolean born(int neighbors);
+    boolean born(int liveNeighbors);
 }

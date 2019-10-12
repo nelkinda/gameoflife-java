@@ -2,22 +2,32 @@ package com.nelkinda.training.gameoflife;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Set;
+import java.util.stream.IntStream;
+
 import static com.nelkinda.training.gameoflife.Rules.ConwayRules;
-import static org.junit.jupiter.api.Assertions.*;
+import static java.util.Set.of;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RulesTest {
+
+    private void assertSurvival(final Rules rules, final Set<Integer> liveNeighbors) {
+        assertAll(IntStream.range(0, 8).mapToObj(neighbors ->
+                () -> assertEquals(liveNeighbors.contains(neighbors), rules.survives(neighbors))));
+    }
+
+    private void assertBirth(final Rules rules, final Set<Integer> liveNeighbors) {
+        assertAll(IntStream.range(0, 8).mapToObj(neighbors ->
+                () -> assertEquals(liveNeighbors.contains(neighbors), rules.born(neighbors))));
+    }
 
     @Test
     void standardRules() {
         assertAll(
                 () -> assertEquals("R 23/3", ConwayRules.toString()),
-                () -> assertFalse(ConwayRules.survives(1)),
-                () -> assertTrue(ConwayRules.survives(2)),
-                () -> assertTrue(ConwayRules.survives(3)),
-                () -> assertFalse(ConwayRules.survives(4)),
-                () -> assertFalse(ConwayRules.born(2)),
-                () -> assertTrue(ConwayRules.born(3)),
-                () -> assertFalse(ConwayRules.born(4))
+                () -> assertSurvival(ConwayRules, of(2, 3)),
+                () -> assertBirth(ConwayRules, Set.of(3))
         );
     }
 }

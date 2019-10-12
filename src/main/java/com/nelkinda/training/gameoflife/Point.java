@@ -32,10 +32,7 @@ public class Point {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final Point point = (Point) o;
-        return x.equals(point.x) && y.equals(point.y);
+        return this == o || o != null && getClass() == o.getClass() && x.equals(((Point) o).x) && y.equals(((Point) o).y);
     }
 
     @Override

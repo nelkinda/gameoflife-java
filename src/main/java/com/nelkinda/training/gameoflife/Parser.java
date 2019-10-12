@@ -6,7 +6,7 @@ import java.util.Set;
 import static com.nelkinda.training.gameoflife.Point.P;
 import static java.util.Collections.unmodifiableSet;
 
-public enum Points {
+public enum Parser {
     ;
 
     public static Universe parse(final String s) {

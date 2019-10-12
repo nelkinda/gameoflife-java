@@ -51,10 +51,7 @@ public class Universe {
 
     @Override
     public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final Universe universe = (Universe) o;
-        return life.equals(universe.life);
+        return this == o || o != null && getClass() == o.getClass() && life.equals(((Universe) o).life);
     }
 
     @Override

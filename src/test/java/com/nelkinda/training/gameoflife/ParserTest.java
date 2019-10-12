@@ -3,7 +3,7 @@ package com.nelkinda.training.gameoflife;
 import org.junit.jupiter.api.Test;
 
 import static com.nelkinda.training.gameoflife.Point.P;
-import static com.nelkinda.training.gameoflife.Points.parse;
+import static com.nelkinda.training.gameoflife.Parser.parse;
 import static java.util.Set.of;
 import static org.junit.jupiter.api.Assertions.*;
 
