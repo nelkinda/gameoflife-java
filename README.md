@@ -19,6 +19,17 @@ It serves as a lose guideline for Nelkinda Coderetreat facilitators.
 > 1. Reproduction (birth): Any dead cell with exactly 3 live neighbors becomes a live cell.
 — [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
+## Activities (aka Constraints)
+This implementation of Game of Life implements the following activities:
+* Test-Driven Development.
+* Immutable objects only.
+  Only pure functions.
+* No variable reassignments (except for the Parser).
+* Started: No naked primitives, not followed through yet.
+* Short functions only.
+  Most functions are one line only.
+  Exception: Some constructors are 2 lines, the Parser is big.
+
 ## References
 - [Coderetreat](https://www.coderetreat.org/)
 - [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
