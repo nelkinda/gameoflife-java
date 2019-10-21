@@ -18,8 +18,7 @@ Feature: Conway's Game of Life
     Given the following universe:
     """
     """
-    When creating the next iteration
-    Then the universe MUST be equal to:
+    Then the next generation MUST be:
     """
     """
 
@@ -28,8 +27,7 @@ Feature: Conway's Game of Life
     """
     x
     """
-    When creating the next iteration
-    Then the universe MUST be equal to:
+    Then the next generation MUST be:
     """
     """
 
@@ -39,8 +37,7 @@ Feature: Conway's Game of Life
     xx
     xx
     """
-    When creating the next iteration
-    Then the universe MUST be equal to:
+    Then the next generation MUST be:
     """
     xx
     xx
@@ -53,15 +50,13 @@ Feature: Conway's Game of Life
     .x
     .x
     """
-    When creating the next iteration
-    Then the universe MUST be equal to:
+    Then the next generation MUST be:
     """
 
     xxx
 
     """
-    When creating the next iteration
-    Then the universe MUST be equal to:
+    Then the next generation MUST be:
     """
     .x
     .x
