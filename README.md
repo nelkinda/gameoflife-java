@@ -20,7 +20,7 @@ It serves as a lose guideline for Nelkinda Coderetreat facilitators.
 — [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 ## Activities (aka Constraints)
-This implementation of Game of Life implements the following activities:
+This implementation of Game of Life follows the following activities and constraints:
 * Test-Driven Development.
 * Immutable objects only.
   Only pure functions.
@@ -29,6 +29,10 @@ This implementation of Game of Life implements the following activities:
 * Short functions only.
   Most functions are one line only.
   Exception: Some constructors are 2 lines, the Parser is big.
+* Domain-Specific Language:
+  The symbol names are taken from the problem domain.
+  A point, for example, is constructed with `P(x, y)` instead of `new Point(x, y)`.
+  That makes the code shorter and easier to read.
 
 ## References
 - [Coderetreat](https://www.coderetreat.org/)
