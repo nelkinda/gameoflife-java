@@ -17,6 +17,7 @@ It serves as a lose guideline for Nelkinda Coderetreat facilitators.
 > 1. Survival: Any live cell with 2 or 3 live neighbors survives on to the next generation.
 > 1. Overpopulation Any live cell with more than 3 live neighbors dies.
 > 1. Reproduction (birth): Any dead cell with exactly 3 live neighbors becomes a live cell.
+
 — [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
 ## Activities (aka Constraints)
