@@ -1,6 +1,5 @@
 package com.nelkinda.training.gameoflife;
 
-import java.math.BigInteger;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -15,10 +14,6 @@ public class Point {
     private Point(final X x, final Y y) {
         this.x = x;
         this.y = y;
-    }
-
-    static Point P(final BigInteger x, final BigInteger y) {
-        return new Point(new X(x), new Y(y));
     }
 
     static Point P(final int x, final int y) {

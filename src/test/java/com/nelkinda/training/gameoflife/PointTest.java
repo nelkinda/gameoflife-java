@@ -10,6 +10,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PointTest {
     @Test
+    void testToString() {
+        assertEquals("P(0, 1)", P(0, 1).toString());
+    }
+
+    @Test
     void equalPoints() {
         final Point p1 = P(0, 0);
         final Point p2 = P(0, 0);
