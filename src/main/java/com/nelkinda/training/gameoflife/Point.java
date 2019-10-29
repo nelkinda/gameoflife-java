@@ -25,6 +25,14 @@ public class Point {
         return new Point(new X(x), new Y(y));
     }
 
+    private Point add(final Point p) {
+        return new Point(x.add(p.x), y.add(p.y));
+    }
+
+    Stream<Point> neighbors() {
+        return neighborSet.stream().map(this::add);
+    }
+
     @Override
     public boolean equals(final Object o) {
         return this == o || o != null && getClass() == o.getClass() && x.equals(((Point) o).x) && y.equals(((Point) o).y);
@@ -38,13 +46,5 @@ public class Point {
     @Override
     public String toString() {
         return "P(" + x + ", " + y + ")";
-    }
-
-    private Point add(final Point p) {
-        return new Point(x.add(p.x), y.add(p.y));
-    }
-
-    Stream<Point> neighbors() {
-        return neighborSet.stream().map(this::add);
     }
 }
