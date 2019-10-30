@@ -37,8 +37,8 @@ public class Universe {
         return life.stream().flatMap(this::deadNeighbors).distinct().filter(this::born);
     }
 
-    private boolean born(final Point point) {
-        return rules.born(countLiveNeighbors(point));
+    private boolean born(final Point cell) {
+        return rules.born(countLiveNeighbors(cell));
     }
 
     private int countLiveNeighbors(final Point cell) {

@@ -10,7 +10,7 @@ public enum Parser {
     ;
 
     public static Universe parse(final String s) {
-        final Set<Point> points = new HashSet<>();
+        final Set<Point> cells = new HashSet<>();
         int line = 0;
         int column = 0;
         for (final char c : s.toCharArray()) {
@@ -20,7 +20,7 @@ public enum Parser {
                 column = 0;
                 break;
             case 'x':
-                points.add(P(column, line));
+                cells.add(P(column, line));
             case '.':
                 column++;
                 break;
@@ -28,6 +28,6 @@ public enum Parser {
                 throw new IllegalArgumentException("Unexpected character '" + c + "' at line " + line + ", column " + column);
             }
         }
-        return new Universe(unmodifiableSet(points));
+        return new Universe(unmodifiableSet(cells));
     }
 }

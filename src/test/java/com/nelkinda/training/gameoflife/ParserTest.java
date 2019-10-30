@@ -8,8 +8,8 @@ import static java.util.Set.of;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParserTest {
-    private static void parses(final String spec, final Point... points) {
-        assertEquals(new Universe(of(points)), parse(spec));
+    private static void parses(final String spec, final Point... cells) {
+        assertEquals(new Universe(of(cells)), parse(spec));
     }
 
     @Test
