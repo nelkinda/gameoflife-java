@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static java.util.Objects.hash;
+import static java.util.Set.of;
 import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
@@ -11,6 +12,10 @@ import static java.util.stream.Stream.concat;
 public class Universe {
     private final Rules rules;
     private final Set<Point> life;
+
+    Universe(final Rules rules, final Point... life) {
+        this(rules, of(life));
+    }
 
     private Universe(final Rules rules, final Set<Point> life) {
         this.rules = rules;
@@ -55,12 +60,16 @@ public class Universe {
 
     @Override
     public boolean equals(final Object o) {
-        return this == o || o != null && getClass() == o.getClass() && life.equals(((Universe) o).life);
+        return this == o || o != null && getClass() == o.getClass() && equals((Universe) o);
+    }
+
+    private boolean equals(final Universe universe) {
+        return rules.equals(universe.rules) && life.equals(universe.life);
     }
 
     @Override
     public int hashCode() {
-        return hash(life);
+        return hash(rules, life);
     }
 
     @Override

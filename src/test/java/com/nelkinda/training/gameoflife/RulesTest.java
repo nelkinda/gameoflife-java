@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 import java.util.Set;
 
 import static com.nelkinda.training.gameoflife.Rules.ConwayRules;
+import static com.nelkinda.training.gameoflife.Rules.standardRules;
 import static java.util.Set.of;
 import static java.util.stream.IntStream.range;
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RulesTest {
 
@@ -23,11 +23,27 @@ class RulesTest {
     }
 
     @Test
-    void standardRules() {
+    void testConwayRules() {
         assertAll(
                 () -> assertEquals("R 23/3", ConwayRules.toString()),
                 () -> assertSurvival(ConwayRules, of(2, 3)),
                 () -> assertBirth(ConwayRules, of(3))
         );
+    }
+
+    @Test
+    void equality() {
+        final Rules rules1 = standardRules(of(), of());
+        final Rules rules2 = standardRules(of(), of());
+        assertEquals(rules1, rules2);
+        assertEquals(rules1.hashCode(), rules2.hashCode());
+    }
+
+    @Test
+    void inEquality() {
+        final Rules rules1 = standardRules(of(), of(1));
+        final Rules rules2 = standardRules(of(1), of());
+        assertNotEquals(rules1, rules2);
+        assertNotEquals(rules1.hashCode(), rules2.hashCode());
     }
 }
