@@ -1,14 +1,16 @@
 package com.nelkinda.training.gameoflife;
 
+import lombok.EqualsAndHashCode;
+
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static java.util.Objects.hash;
 import static java.util.Set.of;
 import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
 
+@EqualsAndHashCode
 public class Universe {
     private final Rules rules;
     private final Set<Point> life;
@@ -56,20 +58,6 @@ public class Universe {
 
     private Stream<Point> liveNeighbors(final Point cell) {
         return cell.neighbors().filter(life::contains);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return this == o || o != null && getClass() == o.getClass() && equals((Universe) o);
-    }
-
-    private boolean equals(final Universe universe) {
-        return rules.equals(universe.rules) && life.equals(universe.life);
-    }
-
-    @Override
-    public int hashCode() {
-        return hash(rules, life);
     }
 
     @Override

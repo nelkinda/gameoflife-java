@@ -1,11 +1,13 @@
 package com.nelkinda.training.gameoflife;
 
+import lombok.EqualsAndHashCode;
+
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static java.util.Objects.hash;
 import static java.util.Set.of;
 
+@EqualsAndHashCode
 public class Point {
     private static final Set<Point> neighborSet = of(P(-1, -1), P(-1, 0), P(-1, 1), P(0, -1), P(0, 1), P(1, -1), P(1, 0), P(1, 1));
     private final X x;
@@ -26,16 +28,6 @@ public class Point {
 
     Stream<Point> neighbors() {
         return neighborSet.stream().map(this::add);
-    }
-
-    @Override
-    public boolean equals(final Object o) {
-        return this == o || o != null && getClass() == o.getClass() && x.equals(((Point) o).x) && y.equals(((Point) o).y);
-    }
-
-    @Override
-    public int hashCode() {
-        return hash(x, y);
     }
 
     @Override
