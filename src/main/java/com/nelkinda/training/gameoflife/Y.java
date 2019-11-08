@@ -3,7 +3,7 @@ package com.nelkinda.training.gameoflife;
 import java.math.BigInteger;
 
 class Y extends Coordinate<Y> {
-    Y(final BigInteger value) {
+    private Y(final BigInteger value) {
         super(value);
     }
 

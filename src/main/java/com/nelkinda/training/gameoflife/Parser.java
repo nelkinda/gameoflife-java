@@ -6,10 +6,10 @@ import java.util.Set;
 import static com.nelkinda.training.gameoflife.Point.P;
 import static java.util.Collections.unmodifiableSet;
 
-public enum Parser {
+enum Parser {
     ;
 
-    public static Universe parse(final String s) {
+    static Universe parse(final String s) {
         final Set<Point> cells = new HashSet<>();
         int line = 0;
         int column = 0;

@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import static java.util.Set.of;
 
 @EqualsAndHashCode
-public class Point {
+class Point {
     private static final Set<Point> neighborSet = of(P(-1, -1), P(-1, 0), P(-1, 1), P(0, -1), P(0, 1), P(1, -1), P(1, 0), P(1, 1));
     private final X x;
     private final Y y;
