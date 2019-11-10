@@ -62,3 +62,39 @@ Feature: Conway's Game of Life
     .x
     .x
     """
+
+  Scenario: Glider
+    Given the following universe:
+    """
+    .x
+    ..x
+    xxx
+    """
+    Then the next generation MUST be:
+    """
+
+    x.x
+    .xx
+    .x
+    """
+    Then the next generation MUST be:
+    """
+
+    ..x
+    x.x
+    .xx
+    """
+    Then the next generation MUST be:
+    """
+
+    .x
+    ..xx
+    .xx
+    """
+    Then the next generation MUST be:
+    """
+
+    ..x
+    ...x
+    .xxx
+    """
