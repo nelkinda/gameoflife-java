@@ -11,7 +11,7 @@ It serves as a lose guideline for Nelkinda Coderetreat facilitators.
 > * Dead aka unpopulated
 > 
 > Every cell interacts with its eight neighbors.
->The neighbors are the cells that are horizontally, vertically, or diagonally adjacent.
+> The neighbors are the cells that are horizontally, vertically, or diagonally adjacent.
 > At each step in time, the following transitions occur:
 > 1. Underpopulation: Any live cell with fewer than 2 live neighbors dies.
 > 1. Survival: Any live cell with 2 or 3 live neighbors survives on to the next generation.
@@ -34,6 +34,10 @@ This implementation of Game of Life follows the following activities and constra
   The symbol names are taken from the problem domain.
   A point, for example, is constructed with `P(x, y)` instead of `new Point(x, y)`.
   That makes the code shorter and easier to read.
+* Functional Core, Imperative Shell:
+  The code is purely functional.
+  The imperative shell is so far out that it's in the test only.
+  The Parser implementation is imperative, but its interface and observable behavior are functional.
 
 ## References
 - [Coderetreat](https://www.coderetreat.org/)
