@@ -11,6 +11,10 @@ all:
 mutation:
 	./mvnw -q clean test org.pitest:pitest-maven:mutationCoverage
 
+.PHONY: pmd
+pmd:
+	./mvnw pmd:pmd
+
 .PHONY: sonar
 sonar:
 	./mvnw verify sonar:sonar -Dsonar.host.uri="$(SONAR_HOST)" -Dsonar.login="$(SONAR_USERNAME)" -Dsonar.password="$(SONAR_PASSWORD)"

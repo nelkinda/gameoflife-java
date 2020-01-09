@@ -7,10 +7,13 @@
     <artifactId>gameoflife-java</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <properties>
-        <maven.compiler.source>13</maven.compiler.source>
-        <maven.compiler.target>13</maven.compiler.target>
-    </properties>
+    <name>Conway's Game of Life in Java</name>
+    <description>
+        An implementation of Conway's Game of Life in Java.
+        It serves as a code and project example for Coderetreat facilitators.
+        This implementation is clean, developed using Behavior Driven Development and Test-Driven Development.
+    </description>
+    <inceptionYear>2009</inceptionYear>
 
     <licenses>
         <license>
@@ -38,6 +41,13 @@
         <system>GitHub</system>
         <url>https://github.com/nelkinda/gameoflife-java/issues</url>
     </issueManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>13</maven.compiler.source>
+        <maven.compiler.target>13</maven.compiler.target>
+        <pmd.version>6.18.0</pmd.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -77,6 +87,37 @@
         </dependency>
     </dependencies>
     <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.12.0</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-core</artifactId>
+                            <version>${pmd.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-java</artifactId>
+                            <version>${pmd.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-javascript</artifactId>
+                            <version>${pmd.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>net.sourceforge.pmd</groupId>
+                            <artifactId>pmd-jsp</artifactId>
+                            <version>${pmd.version}</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
+            </plugins>
+        </pluginManagement>
         <plugins>
             <plugin>
                 <groupId>org.jacoco</groupId>

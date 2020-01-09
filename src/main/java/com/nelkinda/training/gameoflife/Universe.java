@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static java.util.Set.of;
+import static com.nelkinda.training.gameoflife.Rules.ConwayRules;
 import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
@@ -16,7 +16,7 @@ public class Universe {
     private final Set<Point> life;
 
     Universe(final Rules rules, final Point... life) {
-        this(rules, of(life));
+        this(rules, Set.of(life));
     }
 
     private Universe(final Rules rules, final Set<Point> life) {
@@ -25,7 +25,7 @@ public class Universe {
     }
 
     Universe(final Set<Point> life) {
-        this(Rules.ConwayRules, life);
+        this(ConwayRules, life);
     }
 
     Universe next() {
