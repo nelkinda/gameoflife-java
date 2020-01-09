@@ -21,6 +21,7 @@ enum Parser {
                 break;
             case 'x':
                 cells.add(P(column, line));
+                //fallthrough
             case '.':
                 column++;
                 break;

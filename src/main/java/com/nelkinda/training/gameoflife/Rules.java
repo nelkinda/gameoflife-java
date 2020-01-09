@@ -8,6 +8,7 @@ import java.util.Set;
 import static java.util.Set.of;
 import static java.util.stream.Collectors.joining;
 
+@SuppressWarnings("squid:S1214") // Rules is the best place for the ConwayRules constant.
 public interface Rules {
     Rules ConwayRules = standardRules(of(2, 3), of(3));
 
@@ -18,7 +19,6 @@ public interface Rules {
     boolean survives(int liveNeighbors);
 
     boolean born(int liveNeighbors);
-
 }
 
 @EqualsAndHashCode
@@ -26,7 +26,7 @@ class StandardRules implements Rules {
     private final Set<Integer> liveNeighborsForSurvival;
     private final Set<Integer> liveNeighborsForBirth;
 
-    StandardRules(Set<Integer> liveNeighborsForSurvival, Set<Integer> liveNeighborsForBirth) {
+    StandardRules(final Set<Integer> liveNeighborsForSurvival, final Set<Integer> liveNeighborsForBirth) {
         this.liveNeighborsForSurvival = liveNeighborsForSurvival;
         this.liveNeighborsForBirth = liveNeighborsForBirth;
     }

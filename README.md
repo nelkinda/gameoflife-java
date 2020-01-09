@@ -39,6 +39,20 @@ This implementation of Game of Life follows the following activities and constra
   The imperative shell is so far out that it's in the test only.
   The Parser implementation is imperative, but its interface and observable behavior are functional.
 
+## Quality
+
+### Testing, Mutation Test Coverage
+- The acceptance tests are written using BDD in Gherkin and executed via Cucumber.
+- The unit tests are written and executed with JUnit 5.
+  Regular code coverage is measured using JaCoCo which reports 100% lines and condition coverage.
+  On top of that, _Pitest_ is used to perform mutation testing.
+  The mutation tests run by _Pitest_ report 0 surviving mutations. 
+
+### SonarQube
+- The project has a SonarQube analysis.
+  The project has the best possible rating imaginable:
+  0 bugs, 0 vulnerabilities, 0 security hotspots, 0 debt, 0 code smells, 100% coverage, 0.0% duplications, 0 duplicated blocks.
+
 ## References
 - [Coderetreat](https://www.coderetreat.org/)
 - [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)

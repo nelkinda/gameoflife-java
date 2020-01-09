@@ -18,6 +18,7 @@ class Point {
         this.y = y;
     }
 
+    @SuppressWarnings("squid:S00100") // Using the unusual name P for creating a DSL.
     static Point P(final int x, final int y) {
         return new Point(new X(x), new Y(y));
     }
