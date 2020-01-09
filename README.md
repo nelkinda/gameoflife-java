@@ -53,6 +53,9 @@ This implementation of Game of Life follows the following activities and constra
   The project has the best possible rating imaginable:
   0 bugs, 0 vulnerabilities, 0 security hotspots, 0 debt, 0 code smells, 100% coverage, 0.0% duplications, 0 duplicated blocks.
 
+![SonarQube report](src/doc/images/GameOfLife_Sonar.png)
+![Pitest report](src/doc/images/GameOfLife_Pitest.png)
+
 ## References
 - [Coderetreat](https://www.coderetreat.org/)
 - [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
