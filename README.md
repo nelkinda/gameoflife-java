@@ -22,6 +22,7 @@ It serves as a lose guideline for Nelkinda Coderetreat facilitators.
 
 ## Activities (aka Constraints)
 This implementation of Game of Life follows the following activities and constraints:
+* Behavior Driven Development.
 * Test-Driven Development.
 * Immutable objects only.
   Only pure functions.
