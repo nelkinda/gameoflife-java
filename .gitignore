@@ -1,2 +1,4 @@
+.help.mk
+.makehelp
 target
 User.mk
