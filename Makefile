@@ -13,7 +13,7 @@ mutation:
 
 .PHONY: pmd
 pmd:
-	./mvnw pmd:pmd
+	./mvnw pmd:check
 
 .PHONY: sonar
 sonar:
