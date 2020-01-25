@@ -24,16 +24,16 @@
     </licenses>
     <organization>
         <name>Nelkinda Software Craft</name>
-        <url>http://nelkinda.com/</url>
+        <url>https://nelkinda.com/</url>
     </organization>
     <developers>
         <developer>
             <id>christian.hujer</id>
             <name>Christian Hujer</name>
             <email>Christian.Hujer@nelkinda.com</email>
-            <url>http://nelkinda.com/about/christian.hujer/</url>
+            <url>https://nelkinda.com/about/christian.hujer/</url>
             <organization>Nelkinda Software Craft</organization>
-            <organizationUrl>http://nelkinda.com/</organizationUrl>
+            <organizationUrl>https://nelkinda.com/</organizationUrl>
             <timezone>Asia/Kolkatta</timezone>
         </developer>
     </developers>
