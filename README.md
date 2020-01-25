@@ -56,8 +56,17 @@ This implementation of Game of Life follows the following activities and constra
 
 ![SonarQube report](src/doc/images/GameOfLife_Sonar.png)
 ![Pitest report](src/doc/images/GameOfLife_Pitest.png)
-The lack of coverage in the Pitest report is due to a coverage but around enums.
+The lack of coverage in the Pitest report is due to a coverage bug around enums.
 
 ## References
 - [Coderetreat](https://www.coderetreat.org/)
 - [Conway's Game of Life - Wikipedia](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+
+## Questions/Contact
+* [E-Mail: events@nelkinda.com](mailto:events@nelkinda.com)
+* [Nelkinda Website](https://nelkinda.com/)
+* [Nelkinda Events](https://nelkinda.com/events/)
+* [Twitter (Nelkinda)](https://twitter.com/nelkinda)
+* [Twitter (Christian Hujer)](https://twitter.com/christianhujer)
+* [Facebook](https://www.facebook.com/nelkinda/)
+* [LinkedIn](https://www.linkedin.com/company/nelkinda/)
