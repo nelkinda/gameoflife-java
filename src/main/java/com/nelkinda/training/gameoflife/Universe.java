@@ -29,11 +29,19 @@ public class Universe {
     }
 
     Universe next() {
-        return new Universe(rules, concat(survivingCells(), bornCells()).collect(toSet()));
+        return new Universe(
+                rules,
+                concat(
+                        survivingCells(),
+                        bornCells()
+                ).collect(toSet())
+        );
     }
 
     private Stream<Point> survivingCells() {
-        return life.stream().filter(this::survives);
+        return life
+                .stream()
+                .filter(this::survives);
     }
 
     private boolean survives(final Point cell) {
@@ -41,7 +49,11 @@ public class Universe {
     }
 
     private Stream<Point> bornCells() {
-        return life.stream().flatMap(this::deadNeighbors).distinct().filter(this::born);
+        return life
+                .stream()
+                .flatMap(this::deadNeighbors)
+                .distinct()
+                .filter(this::born);
     }
 
     private boolean born(final Point cell) {
@@ -53,11 +65,11 @@ public class Universe {
     }
 
     private Stream<Point> deadNeighbors(final Point cell) {
-        return cell.neighbors().filter(not(life::contains));
+        return cell.neighbors(not(life::contains));
     }
 
     private Stream<Point> liveNeighbors(final Point cell) {
-        return cell.neighbors().filter(life::contains);
+        return cell.neighbors(life::contains);
     }
 
     @Override

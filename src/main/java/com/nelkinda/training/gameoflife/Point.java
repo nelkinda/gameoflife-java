@@ -3,6 +3,7 @@ package com.nelkinda.training.gameoflife;
 import lombok.EqualsAndHashCode;
 
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static java.util.Set.of;
@@ -10,9 +11,11 @@ import static java.util.Set.of;
 @EqualsAndHashCode
 class Point {
     private static final Set<Point> neighborSet = of(
-            P(-1, -1), P( 0, -1), P( 1, -1),
+            //@formatter:off
+            P(-1,  1), P( 0,  1), P( 1,  1),
             P(-1,  0),            P( 1,  0),
-            P(-1,  1), P( 0,  1), P( 1,  1)
+            P(-1, -1), P( 0, -1), P( 1, -1)
+            //@formatter:on
     );
     private final X x;
     private final Y y;
@@ -33,6 +36,10 @@ class Point {
 
     Stream<Point> neighbors() {
         return neighborSet.stream().map(this::add);
+    }
+
+    Stream<Point> neighbors(final Predicate<Point> predicate) {
+        return neighbors().filter(predicate);
     }
 
     @Override
