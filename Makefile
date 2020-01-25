@@ -29,7 +29,7 @@ updates:
 .PHONY: sonard
 ## Runs a Sonar server locally.
 sonard:
-	docker run -d --name sonarqube -p $(SONAR_PORT):9000 sonarqube
+	docker start sonarqube || docker run -d --name sonarqube -p $(SONAR_PORT):9000 sonarqube
 
 .PHONY: clean
 ## Removes all auto-generated files.
