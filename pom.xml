@@ -46,20 +46,26 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
-        <pmd.version>6.20.0</pmd.version>
+        <version.pmd>6.21.0</version.pmd>
+        <version.junit>5.6.0</version.junit>
+        <!-- The latest version of Cucumber is 5.0.0.
+          ~ But that version triggers a NullPointerException in maven-compiler-plugin:3.8.1.
+          ~ No newer version of Cucumber or the maven-compiler-plugin are available to fix the problem.
+          -->
+        <version.cucumber>5.0.0-RC4</version.cucumber>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>5.6.0-RC1</version>
+            <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.vintage</groupId>
             <artifactId>junit-vintage-engine</artifactId>
-            <version>5.6.0-RC1</version>
+            <version>${version.junit}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -70,19 +76,19 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>5.0.0-RC4</version>
+            <version>${version.cucumber}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java8</artifactId>
-            <version>5.0.0-RC4</version>
+            <version>${version.cucumber}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version>5.0.0-RC4</version>
+            <version>${version.cucumber}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -102,22 +108,22 @@
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
                             <artifactId>pmd-core</artifactId>
-                            <version>${pmd.version}</version>
+                            <version>${version.pmd}</version>
                         </dependency>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
                             <artifactId>pmd-java</artifactId>
-                            <version>${pmd.version}</version>
+                            <version>${version.pmd}</version>
                         </dependency>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
                             <artifactId>pmd-javascript</artifactId>
-                            <version>${pmd.version}</version>
+                            <version>${version.pmd}</version>
                         </dependency>
                         <dependency>
                             <groupId>net.sourceforge.pmd</groupId>
                             <artifactId>pmd-jsp</artifactId>
-                            <version>${pmd.version}</version>
+                            <version>${version.pmd}</version>
                         </dependency>
                     </dependencies>
                 </plugin>

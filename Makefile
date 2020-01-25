@@ -21,6 +21,11 @@ all:
 sonar:
 	./mvnw verify sonar:sonar -Dsonar.host.uri="$(SONAR_HOST)" -Dsonar.login="$(SONAR_USERNAME)" -Dsonar.password="$(SONAR_PASSWORD)"
 
+.PHONY: updates
+## Displays which dependencies can be updated to newer versions.
+updates:
+	./mvnw versions:display-dependency-updates | grep -- '->' | sort -u
+
 .PHONY: sonard
 ## Runs a Sonar server locally.
 sonard:
