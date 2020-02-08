@@ -44,12 +44,19 @@
             <organization>Nelkinda Software Craft</organization>
             <organizationUrl>https://nelkinda.com/</organizationUrl>
             <timezone>Asia/Kolkatta</timezone>
+            <properties>
+                <picUrl>https://nelkinda.com/about/img/christian.hujer.jpg</picUrl>
+            </properties>
         </developer>
     </developers>
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/nelkinda/gameoflife-java/issues</url>
     </issueManagement>
+
+    <prerequisites>
+        <maven>3.6.3</maven>
+    </prerequisites>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -140,7 +147,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.12.0</version>
+                <version>3.13.0</version>
                 <dependencies>
                     <dependency>
                         <groupId>net.sourceforge.pmd</groupId>
