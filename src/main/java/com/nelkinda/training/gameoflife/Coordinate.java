@@ -7,7 +7,7 @@ import java.math.BigInteger;
 import static java.math.BigInteger.valueOf;
 
 @EqualsAndHashCode
-abstract class Coordinate<T extends Coordinate<T>> {
+final class Coordinate<T extends Coordinate.Dimension> {
     final BigInteger value;
 
     Coordinate(final BigInteger value) {
@@ -18,10 +18,15 @@ abstract class Coordinate<T extends Coordinate<T>> {
         this.value = valueOf(value);
     }
 
-    abstract T add(final T t);
+    Coordinate<T> add(final Coordinate<T> other) {
+        return new Coordinate<>(value.add(other.value));
+    }
 
     @Override
     public String toString() {
         return value.toString();
+    }
+
+    public interface Dimension {
     }
 }

@@ -17,17 +17,17 @@ class Point {
             P(-1, -1), P( 0, -1), P( 1, -1)
             //@formatter:on
     );
-    private final X x;
-    private final Y y;
+    private final Coordinate<X> x;
+    private final Coordinate<Y> y;
 
-    private Point(final X x, final Y y) {
+    private Point(final Coordinate<X> x, final Coordinate<Y> y) {
         this.x = x;
         this.y = y;
     }
 
     @SuppressWarnings("squid:S00100") // Using the unusual name P for creating a DSL.
     static Point P(final int x, final int y) {
-        return new Point(new X(x), new Y(y));
+        return new Point(new Coordinate<>(x), new Coordinate<>(y));
     }
 
     private Point add(final Point p) {
