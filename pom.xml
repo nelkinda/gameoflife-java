@@ -60,8 +60,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>13</maven.compiler.source>
-        <maven.compiler.target>13</maven.compiler.target>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
         <version.cucumber>5.7.0</version.cucumber>
         <version.junit>5.6.2</version.junit>
         <version.lombok>1.18.12</version.lombok>
@@ -81,11 +81,6 @@
             <artifactId>junit-vintage-engine</artifactId>
             <version>${version.junit}</version>
             <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${version.lombok}</version>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -136,16 +131,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${version.lombok}</version>
-                        </path>
-                    </annotationProcessorPaths>
+                    <release>14</release>
+                    <compilerArgs>
+                        --enable-preview
+                    </compilerArgs>
                 </configuration>
             </plugin>
-            <plugin>
+            <!-- Disable the PMD plugin because PMD doesn't support Java 14 yet. -->
+            <!--plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
                 <version>3.13.0</version>
@@ -187,12 +180,13 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
+                    <argLine>--enable-preview</argLine>
                     <properties>
                         <configurationParameters>
                             junit.jupiter.execution.parallel.enabled=true
@@ -202,7 +196,8 @@
                     </properties>
                 </configuration>
             </plugin>
-            <plugin>
+            <!--Disable Pitest because it doesn't work with Java 14 (yet). -->
+            <!--plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.5.2</version>
@@ -213,7 +208,7 @@
                         <version>0.12</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin-->
         </plugins>
     </build>
 </project>

@@ -1,7 +1,5 @@
 package com.nelkinda.training.gameoflife;
 
-import lombok.EqualsAndHashCode;
-
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -10,18 +8,9 @@ import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
 
-@EqualsAndHashCode
-public class Universe {
-    private final Rules rules;
-    private final Set<Point> life;
-
+record Universe(Rules rules, Set<Point> life) {
     Universe(final Rules rules, final Point... life) {
         this(rules, Set.of(life));
-    }
-
-    private Universe(final Rules rules, final Set<Point> life) {
-        this.rules = rules;
-        this.life = life;
     }
 
     Universe(final Set<Point> life) {

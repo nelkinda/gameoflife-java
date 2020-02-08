@@ -1,6 +1,5 @@
 package com.nelkinda.training.gameoflife;
 
-
 import java.util.Set;
 
 import static java.util.Set.of;
@@ -17,4 +16,3 @@ public interface Rules {
 
     boolean born(int liveNeighbors);
 }
-

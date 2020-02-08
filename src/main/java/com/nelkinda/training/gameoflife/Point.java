@@ -1,20 +1,18 @@
 package com.nelkinda.training.gameoflife;
 
+import java.util.Set;
 import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.X;
 import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.Y;
-import lombok.EqualsAndHashCode;
 
-import java.math.BigInteger;
-import java.util.Set;
+import java.math.BigInteger; // NOSONAR
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import static java.math.BigInteger.valueOf;
 import static java.util.Set.of;
 
-@EqualsAndHashCode
 @SuppressWarnings({"checkstyle:MemberName", "PMD.ShortVariable"})
-class Point {
+record Point(Coordinate<X> x, Coordinate<Y> y) {
     @SuppressWarnings({"checkstyle:ParenPad", "CommentsIndentation"})
     private static final Set<Point> NEIGHBOR_SET = of(
             //@formatter:off
@@ -23,13 +21,6 @@ class Point {
             P(-1, -1), P( 0, -1), P( 1, -1)
             //@formatter:on
     );
-    private final Coordinate<X> x;
-    private final Coordinate<Y> y;
-
-    private Point(final Coordinate<X> x, final Coordinate<Y> y) {
-        this.x = x;
-        this.y = y;
-    }
 
     // Using the unusual name P for creating a DSL.
     @SuppressWarnings({"squid:S00100", "checkstyle:MethodName", "PMD.ShortMethodName", "PMD.MethodNamingConventions"})
@@ -54,16 +45,9 @@ class Point {
         return "P(" + x + ", " + y + ")";
     }
 
-    @EqualsAndHashCode
-    static final class Coordinate<T extends Coordinate.Dimension> {
-        final BigInteger value;
-
-        Coordinate(final BigInteger value) {
-            this.value = value;
-        }
-
+    static record Coordinate<T extends Coordinate.Dimension>(BigInteger value) {
         Coordinate(final int value) {
-            this.value = valueOf(value);
+            this(valueOf(value));
         }
 
         Coordinate<T> plus(final Coordinate<T> other) {

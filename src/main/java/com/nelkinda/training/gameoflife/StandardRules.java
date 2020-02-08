@@ -1,21 +1,10 @@
 package com.nelkinda.training.gameoflife;
 
-import lombok.EqualsAndHashCode;
-
 import java.util.Set;
 
 import static java.util.stream.Collectors.joining;
 
-@EqualsAndHashCode
-class StandardRules implements Rules {
-    private final Set<Integer> liveNeighborsForSurvival;
-    private final Set<Integer> liveNeighborsForBirth;
-
-    StandardRules(final Set<Integer> liveNeighborsForSurvival, final Set<Integer> liveNeighborsForBirth) {
-        this.liveNeighborsForSurvival = liveNeighborsForSurvival;
-        this.liveNeighborsForBirth = liveNeighborsForBirth;
-    }
-
+record StandardRules(Set<Integer> liveNeighborsForSurvival, Set<Integer> liveNeighborsForBirth) implements Rules {
     @Override
     public boolean survives(final int liveNeighbors) {
         return liveNeighborsForSurvival.contains(liveNeighbors);
