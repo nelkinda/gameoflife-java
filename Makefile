@@ -14,7 +14,7 @@ SONAR_HOST?=http://localhost:$(SONAR_PORT)/
 ## Builds and tests everything.
 # Sonar is run separately because it depends on the SonarQube server.
 all:
-	./mvnw -q package pmd:check org.pitest:pitest-maven:mutationCoverage
+	./mvnw -q verify org.pitest:pitest-maven:mutationCoverage
 
 .PHONY: sonar
 ## Performs static code analysis with SonarQube.
