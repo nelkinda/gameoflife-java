@@ -1,11 +1,15 @@
 package com.nelkinda.training.gameoflife;
 
+import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.X;
+import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.Y;
 import lombok.EqualsAndHashCode;
 
+import java.math.BigInteger;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import static java.math.BigInteger.valueOf;
 import static java.util.Set.of;
 
 @EqualsAndHashCode
@@ -45,5 +49,35 @@ class Point {
     @Override
     public String toString() {
         return "P(" + x + ", " + y + ")";
+    }
+
+    @EqualsAndHashCode
+    static final class Coordinate<T extends Coordinate.Dimension> {
+        final BigInteger value;
+
+        Coordinate(final BigInteger value) {
+            this.value = value;
+        }
+
+        Coordinate(final int value) {
+            this.value = valueOf(value);
+        }
+
+        Coordinate<T> add(final Coordinate<T> other) {
+            return new Coordinate<>(value.add(other.value));
+        }
+
+        @Override
+        public String toString() {
+            return value.toString();
+        }
+
+        interface Dimension {
+            interface X extends Dimension {
+            }
+
+            interface Y extends Dimension {
+            }
+        }
     }
 }
