@@ -1,10 +1,10 @@
 package com.nelkinda.training.gameoflife;
 
-import java.util.Set;
 import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.X;
 import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.Y;
 
-import java.math.BigInteger; // NOSONAR
+import java.math.BigInteger;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -22,7 +22,7 @@ record Point(Coordinate<X> x, Coordinate<Y> y) {
             //@formatter:on
     );
 
-    // Using the unusual name P for creating a DSL.
+     // Using the unusual name P for creating a DSL.
     @SuppressWarnings({"squid:S00100", "checkstyle:MethodName", "PMD.ShortMethodName", "PMD.MethodNamingConventions"})
     static Point P(final int x, final int y) {
         return new Point(new Coordinate<>(x), new Coordinate<>(y));
