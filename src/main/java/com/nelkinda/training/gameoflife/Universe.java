@@ -48,11 +48,15 @@ public class Universe {
         return rules.survives(countLiveNeighbors(cell));
     }
 
-    private Stream<Point> bornCells() {
+    private Stream<Point> deadNeighborsOfAliveCells() {
         return life
                 .stream()
                 .flatMap(this::deadNeighbors)
-                .distinct()
+                .distinct();
+    }
+
+    private Stream<Point> bornCells() {
+        return deadNeighborsOfAliveCells()
                 .filter(this::born);
     }
 
