@@ -9,7 +9,7 @@ import static java.util.Collections.unmodifiableSet;
 enum Parser {
     ;
 
-    static Universe parse(final String s) {
+    static Universe parseSimplifiedLife1_05(final String s) {
         final Set<Point> cells = new HashSet<>();
         int line = 0;
         int column = 0;
@@ -19,7 +19,7 @@ enum Parser {
                 line++;
                 column = 0;
                 break;
-            case 'x':
+            case '*':
                 cells.add(P(column, line));
                 //fallthrough
             case '.':
