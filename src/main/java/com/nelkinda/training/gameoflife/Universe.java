@@ -56,6 +56,10 @@ public class Universe {
                 .filter(this::born);
     }
 
+    private boolean isAlive(final Point cell) {
+        return life.contains(cell);
+    }
+
     private boolean born(final Point cell) {
         return rules.born(countLiveNeighbors(cell));
     }
@@ -65,11 +69,11 @@ public class Universe {
     }
 
     private Stream<Point> deadNeighbors(final Point cell) {
-        return cell.neighbors(not(life::contains));
+        return cell.neighbors(not(this::isAlive));
     }
 
     private Stream<Point> liveNeighbors(final Point cell) {
-        return cell.neighbors(life::contains);
+        return cell.neighbors(this::isAlive);
     }
 
     @Override
