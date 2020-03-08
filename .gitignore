@@ -1,4 +1,14 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# make
 .help.mk
 .makehelp
-target
 .User.mk
+
+# Maven
+target/
+
+# Vim
+*.swp
