@@ -13,7 +13,7 @@ class ParserTest {
     }
 
     @Test
-    void empty() {
+    void test() {
         assertAll(
                 () -> parses(""),
                 () -> parses("*", P(0, 0)),
