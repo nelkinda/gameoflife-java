@@ -13,7 +13,7 @@ class ParserTest {
     }
 
     @Test
-    void test() {
+    void testParses() {
         assertAll(
                 () -> parses(""),
                 () -> parses("*", P(0, 0)),
@@ -21,6 +21,10 @@ class ParserTest {
                 () -> parses("*\n*", P(0, 0), P(0, 1)),
                 () -> parses("*.*", P(0, 0), P(2, 0))
         );
+    }
+
+    @Test
+    void testInvalid() {
         assertThrows(IllegalArgumentException.class, () -> parses("o"));
     }
 }

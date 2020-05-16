@@ -5,7 +5,7 @@ import lombok.EqualsAndHashCode;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import static com.nelkinda.training.gameoflife.Rules.ConwayRules;
+import static com.nelkinda.training.gameoflife.Rules.CONWAY_RULES;
 import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
@@ -25,7 +25,7 @@ public class Universe {
     }
 
     Universe(final Set<Point> life) {
-        this(ConwayRules, life);
+        this(CONWAY_RULES, life);
     }
 
     Universe next() {

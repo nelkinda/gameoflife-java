@@ -13,8 +13,10 @@ import static java.math.BigInteger.valueOf;
 import static java.util.Set.of;
 
 @EqualsAndHashCode
+@SuppressWarnings({"checkstyle:MemberName", "PMD.ShortVariable"})
 class Point {
-    private static final Set<Point> neighborSet = of(
+    @SuppressWarnings({"checkstyle:ParenPad", "CommentsIndentation"})
+    private static final Set<Point> NEIGHBOR_SET = of(
             //@formatter:off
             P(-1,  1), P( 0,  1), P( 1,  1),
             P(-1,  0),            P( 1,  0),
@@ -29,7 +31,8 @@ class Point {
         this.y = y;
     }
 
-    @SuppressWarnings("squid:S00100") // Using the unusual name P for creating a DSL.
+    // Using the unusual name P for creating a DSL.
+    @SuppressWarnings({"squid:S00100", "checkstyle:MethodName", "PMD.ShortMethodName", "PMD.MethodNamingConventions"})
     static Point P(final int x, final int y) {
         return new Point(new Coordinate<>(x), new Coordinate<>(y));
     }
@@ -39,7 +42,7 @@ class Point {
     }
 
     Stream<Point> neighbors() {
-        return neighborSet.stream().map(this::add);
+        return NEIGHBOR_SET.stream().map(this::add);
     }
 
     Stream<Point> neighbors(final Predicate<Point> predicate) {
@@ -72,6 +75,7 @@ class Point {
             return value.toString();
         }
 
+        @SuppressWarnings("PMD.ShortClassName")
         interface Dimension {
             interface X extends Dimension {
             }

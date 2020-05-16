@@ -1,5 +1,6 @@
 # Game of Life
 
+![Java CI with Gradle](https://github.com/nelkinda/gameoflife-java/workflows/Java%20CI%20with%20Gradle/badge.svg)
 ![Java CI with Maven](https://github.com/nelkinda/gameoflife-java/workflows/Java%20CI%20with%20Maven/badge.svg)
 
 This is an example implementation of Conway's Game of Life in **Java**.

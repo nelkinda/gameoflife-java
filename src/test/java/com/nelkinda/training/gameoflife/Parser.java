@@ -9,11 +9,17 @@ import static java.util.Collections.unmodifiableSet;
 enum Parser {
     ;
 
-    static Universe parseSimplifiedLife1_05(final String s) {
+    @SuppressWarnings({
+            "checkstyle:ParameterName",
+            "PMD.FormalParameterNamingConventions",
+            "PMD.MethodNamingConventions",
+            "PMD.MissingBreakInSwitch"
+    })
+    static Universe parseSimplifiedLife1_05(final String life1_05) {
         final Set<Point> cells = new HashSet<>();
         int line = 0;
         int column = 0;
-        for (final char c : s.toCharArray()) {
+        for (final char c : life1_05.toCharArray()) {
             switch (c) {
             case '\n':
                 line++;
@@ -26,7 +32,8 @@ enum Parser {
                 column++;
                 break;
             default:
-                throw new IllegalArgumentException("Unexpected character '" + c + "' at line " + line + ", column " + column);
+                final var msg = "Unexpected character '" + c + "' at line " + line + ", column " + column;
+                throw new IllegalArgumentException(msg);
             }
         }
         return new Universe(unmodifiableSet(cells));

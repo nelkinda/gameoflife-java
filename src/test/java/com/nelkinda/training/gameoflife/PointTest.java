@@ -8,6 +8,7 @@ import static java.util.stream.Collectors.toSet;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@SuppressWarnings({"PMD.JUnitTestContainsTooManyAsserts", "PMD.ShortVariable"})
 class PointTest {
     @Test
     void testToString() {

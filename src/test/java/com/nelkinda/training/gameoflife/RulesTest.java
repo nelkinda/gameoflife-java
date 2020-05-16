@@ -4,12 +4,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
-import static com.nelkinda.training.gameoflife.Rules.ConwayRules;
+import static com.nelkinda.training.gameoflife.Rules.CONWAY_RULES;
 import static com.nelkinda.training.gameoflife.Rules.standardRules;
 import static java.util.Set.of;
 import static java.util.stream.IntStream.range;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SuppressWarnings("PMD.JUnitTestContainsTooManyAsserts")
 class RulesTest {
 
     private void assertSurvival(final Rules rules, final Set<Integer> liveNeighbors) {
@@ -25,9 +26,9 @@ class RulesTest {
     @Test
     void testConwayRules() {
         assertAll(
-                () -> assertEquals("R 23/3", ConwayRules.toString()),
-                () -> assertSurvival(ConwayRules, of(2, 3)),
-                () -> assertBirth(ConwayRules, of(3))
+                () -> assertEquals("R 23/3", CONWAY_RULES.toString()),
+                () -> assertSurvival(CONWAY_RULES, of(2, 3)),
+                () -> assertBirth(CONWAY_RULES, of(3))
         );
     }
 
