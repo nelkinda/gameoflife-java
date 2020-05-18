@@ -37,12 +37,12 @@ class Point {
         return new Point(new Coordinate<>(x), new Coordinate<>(y));
     }
 
-    private Point add(final Point p) {
-        return new Point(x.add(p.x), y.add(p.y));
+    Point plus(final Point p) {
+        return new Point(x.plus(p.x), y.plus(p.y));
     }
 
     Stream<Point> neighbors() {
-        return NEIGHBOR_SET.stream().map(this::add);
+        return NEIGHBOR_SET.stream().map(this::plus);
     }
 
     Stream<Point> neighbors(final Predicate<Point> predicate) {
@@ -66,7 +66,7 @@ class Point {
             this.value = valueOf(value);
         }
 
-        Coordinate<T> add(final Coordinate<T> other) {
+        Coordinate<T> plus(final Coordinate<T> other) {
             return new Coordinate<>(value.add(other.value));
         }
 

@@ -32,6 +32,11 @@ class PointTest {
     }
 
     @Test
+    void plus() {
+        assertEquals(P(3, 30), P(2,  20).plus(P(1, 10)));
+    }
+
+    @Test
     void neighbors() {
         assertEquals(
                 of(P(4, 4), P(4, 5), P(4, 6), P(5, 4), P(5, 6), P(6, 4), P(6, 5), P(6, 6)),
