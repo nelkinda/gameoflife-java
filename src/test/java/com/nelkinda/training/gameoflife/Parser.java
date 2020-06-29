@@ -1,41 +1,56 @@
 package com.nelkinda.training.gameoflife;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import static com.nelkinda.training.gameoflife.Point.P;
+import static java.lang.String.format;
 import static java.util.Collections.unmodifiableSet;
 
-enum Parser {
-    ;
+final class Parser {
+    private final Set<Point> cells = new HashSet<>();
+    private int line = 1;
+    private int column = 1;
+    private final Map<Character, Runnable> syntax = Map.of(
+            '\n', () -> {
+                line++;
+                column = 0;
+            },
+            '*', () -> cells.add(P(column - 1, line - 1)),
+            '.', () -> {
+            }
+    );
+
+    private Parser() {
+    }
 
     @SuppressWarnings({
             "checkstyle:ParameterName",
             "PMD.FormalParameterNamingConventions",
             "PMD.MethodNamingConventions",
-            "PMD.MissingBreakInSwitch"
     })
     static Universe parseSimplifiedLife1_05(final String life1_05) {
-        final Set<Point> cells = new HashSet<>();
-        int line = 0;
-        int column = 0;
+        return new Parser().parseSimplifiedLife1_05Impl(life1_05);
+    }
+
+    @SuppressWarnings({
+            "checkstyle:ParameterName",
+            "PMD.FormalParameterNamingConventions",
+            "PMD.MethodNamingConventions",
+    })
+    private Universe parseSimplifiedLife1_05Impl(final String life1_05) {
         for (final char c : life1_05.toCharArray()) {
-            switch (c) {
-            case '\n':
-                line++;
-                column = 0;
-                break;
-            case '*':
-                cells.add(P(column, line));
-                //fallthrough
-            case '.':
-                column++;
-                break;
-            default:
-                final var msg = "Unexpected character '" + c + "' at line " + line + ", column " + column;
-                throw new IllegalArgumentException(msg);
-            }
+            syntax.getOrDefault(c, () -> syntaxError(c)).run();
+            column++;
         }
         return new Universe(unmodifiableSet(cells));
+    }
+
+    @SuppressWarnings({
+            "PMD.ShortVariable",
+    })
+    private void syntaxError(final char c) {
+        throw new IllegalArgumentException(format("Unexpected character '%s' at line %d, column %d", c, line, column));
     }
 }

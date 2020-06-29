@@ -23,8 +23,10 @@ class ParserTest {
         );
     }
 
+    @SuppressWarnings("PMD.JUnitTestContainsTooManyAsserts")
     @Test
     void testInvalid() {
-        assertThrows(IllegalArgumentException.class, () -> parses("o"));
+        final var exception = assertThrows(IllegalArgumentException.class, () -> parses("o"));
+        assertEquals("Unexpected character 'o' at line 1, column 1", exception.getMessage());
     }
 }
