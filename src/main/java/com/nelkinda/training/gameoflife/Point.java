@@ -3,7 +3,7 @@ package com.nelkinda.training.gameoflife;
 import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.X;
 import com.nelkinda.training.gameoflife.Point.Coordinate.Dimension.Y;
 
-import java.math.BigInteger;
+import java.math.BigInteger; // NOSONAR
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -13,7 +13,7 @@ import static java.util.Set.of;
 
 @SuppressWarnings({"checkstyle:MemberName", "PMD.ShortVariable"})
 record Point(Coordinate<X> x, Coordinate<Y> y) {
-    @SuppressWarnings({"checkstyle:ParenPad", "CommentsIndentation"})
+//    @SuppressWarnings({"checkstyle:ParenPad", "CommentsIndentation"})
     private static final Set<Point> NEIGHBOR_SET = of(
             //@formatter:off
             P(-1,  1), P( 0,  1), P( 1,  1),
