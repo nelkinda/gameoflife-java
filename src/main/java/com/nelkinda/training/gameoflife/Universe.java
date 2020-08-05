@@ -1,8 +1,13 @@
 package com.nelkinda.training.gameoflife;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 import java.util.stream.Stream;
 
 import static com.nelkinda.training.gameoflife.Rules.CONWAY_RULES;
@@ -10,10 +15,29 @@ import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(of = {"rules", "life"})
 public class Universe {
+    @Getter
     private final Rules rules;
+
+    @Getter
     private final Set<Point> life;
+
+    private final Predicate<Point> isAlive = cell -> getLife().contains(cell);
+    private final Function<Point, Stream<Point>> liveNeighbors = cell -> cell.neighbors.get().filter(isAlive);
+    private final ToIntFunction<Point> countLiveNeighbors = cell -> (int) liveNeighbors.apply(cell).count();
+    private final Predicate<Point> born = cell -> getRules().born(countLiveNeighbors.applyAsInt(cell));
+    private final Predicate<Point> survives = cell -> getRules().survives(countLiveNeighbors.applyAsInt(cell));
+    private final Function<Point, Stream<Point>> deadNeighbors = cell -> cell.neighbors.get().filter(not(isAlive));
+
+    private final Supplier<Stream<Point>> survivingCells = () -> getLife().stream().filter(survives);
+    private final Supplier<Stream<Point>> deadNeighborsOfLivingCells =
+            () -> getLife().stream().flatMap(deadNeighbors).distinct();
+    private final Supplier<Stream<Point>> bornCells = () -> deadNeighborsOfLivingCells.get().filter(born);
+
+    final Supplier<Universe> next =
+            () -> new Universe(getRules(), concat(survivingCells.get(), bornCells.get()).collect(toSet()));
+
 
     Universe(final Rules rules, final Point... life) {
         this(rules, Set.of(life));
@@ -26,58 +50,6 @@ public class Universe {
 
     Universe(final Set<Point> life) {
         this(CONWAY_RULES, life);
-    }
-
-    Universe next() {
-        return new Universe(
-                rules,
-                concat(
-                        survivingCells(),
-                        bornCells()
-                ).collect(toSet())
-        );
-    }
-
-    private Stream<Point> survivingCells() {
-        return life
-                .stream()
-                .filter(this::survives);
-    }
-
-    private boolean survives(final Point cell) {
-        return rules.survives(countLiveNeighbors(cell));
-    }
-
-    private Stream<Point> deadNeighborsOfLivingCells() {
-        return life
-                .stream()
-                .flatMap(this::deadNeighbors)
-                .distinct();
-    }
-
-    private Stream<Point> bornCells() {
-        return deadNeighborsOfLivingCells()
-                .filter(this::born);
-    }
-
-    private boolean isAlive(final Point cell) {
-        return life.contains(cell);
-    }
-
-    private boolean born(final Point cell) {
-        return rules.born(countLiveNeighbors(cell));
-    }
-
-    private int countLiveNeighbors(final Point cell) {
-        return (int) liveNeighbors(cell).count();
-    }
-
-    private Stream<Point> deadNeighbors(final Point cell) {
-        return cell.neighbors(not(this::isAlive));
-    }
-
-    private Stream<Point> liveNeighbors(final Point cell) {
-        return cell.neighbors(this::isAlive);
     }
 
     @Override

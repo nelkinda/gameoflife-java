@@ -16,7 +16,7 @@ public class GameOfLifeSteps {
 
     @Then("the next generation MUST be:")
     public void assertNextGenerationEquals(final String spec) {
-        universe = universe.next();
+        universe = universe.next.get();
         assertEquals(parseSimplifiedLife1_05(spec), universe);
     }
 }

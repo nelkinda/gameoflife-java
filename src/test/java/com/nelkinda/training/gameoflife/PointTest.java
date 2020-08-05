@@ -33,14 +33,14 @@ class PointTest {
 
     @Test
     void plus() {
-        assertEquals(P(3, 30), P(2,  20).plus(P(1, 10)));
+        assertEquals(P(3, 30), P(2,  20).plus.apply(P(1, 10)));
     }
 
     @Test
     void neighbors() {
         assertEquals(
                 of(P(4, 49), P(4, 50), P(4, 51), P(5, 49), P(5, 51), P(6, 49), P(6, 50), P(6, 51)),
-                P(5, 50).neighbors().collect(toSet())
+                P(5, 50).neighbors.get().collect(toSet())
         );
     }
 }
