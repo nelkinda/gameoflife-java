@@ -59,7 +59,6 @@ This implementation of Game of Life follows the following activities and constra
 
 ![SonarQube report](src/doc/images/GameOfLife_Sonar.png)
 ![Pitest report](src/doc/images/GameOfLife_Pitest.png)
-The lack of coverage in the Pitest report is due to a coverage bug around enums.
 
 ## References
 - [Coderetreat](https://www.coderetreat.org/)
