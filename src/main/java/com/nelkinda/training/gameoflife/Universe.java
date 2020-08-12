@@ -6,7 +6,6 @@ import java.util.Set;
 import java.util.stream.Stream;
 
 import static com.nelkinda.training.gameoflife.Rules.CONWAY_RULES;
-import static java.util.function.Predicate.not;
 import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
 
@@ -64,6 +63,10 @@ public class Universe {
         return life.contains(cell);
     }
 
+    private boolean isDead(final Point cell) {
+        return !life.contains(cell);
+    }
+
     private boolean born(final Point cell) {
         return rules.born(countLiveNeighbors(cell));
     }
@@ -73,7 +76,7 @@ public class Universe {
     }
 
     private Stream<Point> deadNeighbors(final Point cell) {
-        return cell.neighbors(not(this::isAlive));
+        return cell.neighbors(this::isDead);
     }
 
     private Stream<Point> liveNeighbors(final Point cell) {
