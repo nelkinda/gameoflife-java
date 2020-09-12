@@ -78,7 +78,7 @@ dependencies {
 }
 
 checkDependencyUpdates {
-    failIfUpdatesFound = true
+    failIfUpdatesFound = false
 }
 
 checkstyleMain {
