@@ -1,15 +1,15 @@
-package com.nelkinda.training.gameoflife;
+package com.nelkinda.training.gameoflife.life2d;
 
 import org.junit.jupiter.api.Test;
 
-import static com.nelkinda.training.gameoflife.Point.P;
+import static com.nelkinda.training.gameoflife.life2d.Point2D.P;
 import static java.util.Set.of;
 import static java.util.stream.Collectors.toSet;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings({"PMD.JUnitTestContainsTooManyAsserts", "PMD.ShortVariable"})
-class PointTest {
+class Point2DTest {
     @Test
     void testToString() {
         assertEquals("P(0, 1)", P(0, 1).toString());
@@ -17,16 +17,16 @@ class PointTest {
 
     @Test
     void equalPoints() {
-        final Point p1 = P(0, 0);
-        final Point p2 = P(0, 0);
+        final Point2D p1 = P(0, 0);
+        final Point2D p2 = P(0, 0);
         assertEquals(p1, p2);
         assertEquals(p1.hashCode(), p2.hashCode());
     }
 
     @Test
     void notEqualPoints() {
-        final Point p1 = P(0, 0);
-        final Point p2 = P(0, 1);
+        final Point2D p1 = P(0, 0);
+        final Point2D p2 = P(0, 1);
         assertNotEquals(p1, p2);
         assertNotEquals(p1.hashCode(), p2.hashCode());
     }
@@ -34,6 +34,11 @@ class PointTest {
     @Test
     void plus() {
         assertEquals(P(3, 30), P(2,  20).plus(P(1, 10)));
+    }
+
+    @Test
+    void rangeTo() {
+        assertEquals(of(P(0, 0), P(0, 1), P(0, 2)), P(0, 0).rangeTo(P(0, 2)).collect(toSet()));
     }
 
     @Test

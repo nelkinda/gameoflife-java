@@ -1,15 +1,17 @@
 package com.nelkinda.training.gameoflife;
 
+import com.nelkinda.training.gameoflife.life2d.Point2D;
+
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static com.nelkinda.training.gameoflife.Point.P;
+import static com.nelkinda.training.gameoflife.life2d.Point2D.P;
 import static java.lang.String.format;
 import static java.util.Collections.unmodifiableSet;
 
 final class Parser {
-    private final Set<Point> cells = new HashSet<>();
+    private final Set<Point2D> cells = new HashSet<>();
     private int line = 1;
     private int column = 1;
     private final Map<Character, Runnable> syntax = Map.of(

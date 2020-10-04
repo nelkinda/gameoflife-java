@@ -1,14 +1,15 @@
 package com.nelkinda.training.gameoflife;
 
+import com.nelkinda.training.gameoflife.life2d.Point2D;
 import org.junit.jupiter.api.Test;
 
 import static com.nelkinda.training.gameoflife.Parser.parseSimplifiedLife1_05;
-import static com.nelkinda.training.gameoflife.Point.P;
+import static com.nelkinda.training.gameoflife.life2d.Point2D.P;
 import static java.util.Set.of;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ParserTest {
-    private static void parses(final String spec, final Point... cells) {
+    private static void parses(final String spec, final Point2D... cells) {
         assertEquals(new Universe(of(cells)), parseSimplifiedLife1_05(spec));
     }
 

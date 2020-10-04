@@ -10,25 +10,27 @@ import static java.util.stream.Collectors.toSet;
 import static java.util.stream.Stream.concat;
 
 @EqualsAndHashCode
-public class Universe {
+@SuppressWarnings({"java:S119","ClassTypeParameterName", "PMD.GenericsNaming"})
+public class Universe<Cell extends Point<Cell>> {
     private final Rules rules;
-    private final Set<Point> life;
+    private final Set<Cell> life;
 
-    Universe(final Rules rules, final Point... life) {
+    @SafeVarargs
+    Universe(final Rules rules, final Cell... life) {
         this(rules, Set.of(life));
     }
 
-    private Universe(final Rules rules, final Set<Point> life) {
+    private Universe(final Rules rules, final Set<Cell> life) {
         this.rules = rules;
         this.life = life;
     }
 
-    Universe(final Set<Point> life) {
+    Universe(final Set<Cell> life) {
         this(CONWAY_RULES, life);
     }
 
-    Universe next() {
-        return new Universe(
+    Universe<Cell> next() {
+        return new Universe<>(
                 rules,
                 concat(
                         survivingCells(),
@@ -37,50 +39,50 @@ public class Universe {
         );
     }
 
-    private Stream<Point> survivingCells() {
+    private Stream<Cell> survivingCells() {
         return life
                 .stream()
                 .filter(this::survives);
     }
 
-    private boolean survives(final Point cell) {
-        return rules.survives(countLiveNeighbors(cell));
-    }
-
-    private Stream<Point> deadNeighborsOfLivingCells() {
+    private Stream<Cell> deadNeighborsOfLivingCells() {
         return life
                 .stream()
                 .flatMap(this::deadNeighbors)
                 .distinct();
     }
 
-    private Stream<Point> bornCells() {
+    private Stream<Cell> bornCells() {
         return deadNeighborsOfLivingCells()
                 .filter(this::born);
     }
 
-    private boolean isAlive(final Point cell) {
-        return life.contains(cell);
+    private boolean survives(final Cell cell) {
+        return rules.survives(countLiveNeighbors(cell));
     }
 
-    private boolean isDead(final Point cell) {
-        return !life.contains(cell);
-    }
-
-    private boolean born(final Point cell) {
+    private boolean born(final Cell cell) {
         return rules.born(countLiveNeighbors(cell));
     }
 
-    private int countLiveNeighbors(final Point cell) {
-        return (int) liveNeighbors(cell).count();
+    private boolean isAlive(final Cell cell) {
+        return life.contains(cell);
     }
 
-    private Stream<Point> deadNeighbors(final Point cell) {
+    private boolean isDead(final Cell cell) {
+        return !isAlive(cell);
+    }
+
+    private Stream<Cell> deadNeighbors(final Cell cell) {
         return cell.neighbors(this::isDead);
     }
 
-    private Stream<Point> liveNeighbors(final Point cell) {
+    private Stream<Cell> liveNeighbors(final Cell cell) {
         return cell.neighbors(this::isAlive);
+    }
+
+    private int countLiveNeighbors(final Cell cell) {
+        return (int) liveNeighbors(cell).count();
     }
 
     @Override
