@@ -62,10 +62,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>13</maven.compiler.source>
         <maven.compiler.target>13</maven.compiler.target>
-        <version.cucumber>6.8.0</version.cucumber>
+        <version.cucumber>6.8.2</version.cucumber>
         <version.junit>5.7.0</version.junit>
-        <version.lombok>1.18.12</version.lombok>
-        <version.pmd>6.28.0</version.pmd>
+        <version.lombok>1.18.16</version.lombok>
+        <version.pmd>6.29.0</version.pmd>
         <asm.version>7.3.1</asm.version>
     </properties>
 
@@ -114,7 +114,7 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct-processor</artifactId>
-            <version>1.4.0.Final</version>
+            <version>1.4.1.Final</version>
         </dependency>
     </dependencies>
     <build>
