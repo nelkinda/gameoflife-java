@@ -6,7 +6,6 @@ plugins {
     id 'org.sonarqube' version '3.1'
     id 'jacoco'
     id 'info.solidsoft.pitest' version '1.5.2'
-    id 'name.remal.check-updates' version '1.2.2'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
@@ -77,10 +76,6 @@ dependencies {
 
     pitest 'org.pitest:pitest-junit5-plugin'
     pitest 'org.pitest:pitest-command-line'
-}
-
-checkDependencyUpdates {
-    failIfUpdatesFound = false
 }
 
 checkstyleMain {
