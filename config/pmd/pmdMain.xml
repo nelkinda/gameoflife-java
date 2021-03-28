@@ -28,6 +28,7 @@
     <rule ref="category/java/design.xml">
         <exclude name="LawOfDemeter"/><!-- False positives about Collection fields and Streams -->
         <exclude name="LoosePackageCoupling"/>
+        <exclude name="TooManyMethods"/><!-- Contradicts "extract 'till you drop" -->
     </rule>
     <rule ref="category/java/documentation.xml">
         <exclude name="CommentRequired"/>
