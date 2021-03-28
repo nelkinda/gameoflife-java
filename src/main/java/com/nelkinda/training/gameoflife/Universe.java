@@ -30,13 +30,11 @@ public class Universe<Cell extends Point<Cell>> {
     }
 
     Universe<Cell> next() {
-        return new Universe<>(
-                rules,
-                concat(
-                        survivingCells(),
-                        bornCells()
-                ).collect(toSet())
-        );
+        return new Universe<>(rules, cellsOfNextGeneration());
+    }
+
+    private Set<Cell> cellsOfNextGeneration() {
+        return concat(survivingCells(), bornCells()).collect(toSet());
     }
 
     private Stream<Cell> survivingCells() {
