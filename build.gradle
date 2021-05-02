@@ -12,7 +12,7 @@ plugins {
 group 'com.nelkinda.training.gameoflife'
 version '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 14
+sourceCompatibility = 16
 
 repositories {
     mavenCentral()
@@ -150,6 +150,6 @@ test {
 }
 
 wrapper {
-    gradleVersion '6.8.3'
+    gradleVersion '7.0'
     distributionType = Wrapper.DistributionType.ALL
 }
