@@ -1,5 +1,14 @@
 # Game of Life
 
+Note: This version uses Java 16, and there are known issues.
+- SonarJava does not visit members correctly, leading to false positives about unused imports. https://jira.sonarsource.com/browse/SONARJAVA-3799
+  These false positives are reported when running SonarLint via Gradle, when running SonarQube via Maven or Gradle, or when using the SonarLint plugin in an IDE like IntelliJ IDEA.
+- Jacoco does not recognize record accessors as auto-generated, and there is no way (yet? Lombok?) to suppress the auto-generated record field accessors.
+  This leads to the coverage reports reporting the record field accessors as uncovered code.
+- This is also updated to Gradle 7.
+  There is an incompatibility somewhere between Gradle 7 and IntelliJ IDEA.
+  If you want to open this project in IntelliJ IDEA, import the `pom.xml` as Maven project, not the `build.gradle` as Gradle project.
+
 ![Java CI with Gradle](https://github.com/nelkinda/gameoflife-java/workflows/Java%20CI%20with%20Gradle/badge.svg)
 ![Java CI with Maven](https://github.com/nelkinda/gameoflife-java/workflows/Java%20CI%20with%20Maven/badge.svg)
 

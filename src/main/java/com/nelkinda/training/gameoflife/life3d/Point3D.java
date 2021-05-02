@@ -1,29 +1,21 @@
 package com.nelkinda.training.gameoflife.life3d;
 
 import com.nelkinda.training.gameoflife.Point;
-import lombok.EqualsAndHashCode;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-@EqualsAndHashCode
 @SuppressWarnings({"checkstyle:MemberName", "PMD.ShortVariable"})
-public class Point3D implements Point<Point3D> {
+public record Point3D(
+        int x,
+        int y,
+        int z
+) implements Point<Point3D> {
     @SuppressWarnings({"checkstyle:ParenPad", "CommentsIndentation"})
     private static final Set<Point3D> NEIGHBORS_OF_ORIGIN =
             P(-1, -1, -1).rangeTo(P(1, 1, 1)).filter(it -> !it.equals(P(0, 0, 0))).collect(Collectors.toSet());
-
-    private final int x;
-    private final int y;
-    private final int z;
-
-    Point3D(final int x, final int y, final int z) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-    }
 
     // Using the unusual name P for creating a DSL.
     @SuppressWarnings({"squid:S00100", "checkstyle:MethodName", "PMD.ShortMethodName", "PMD.MethodNamingConventions"})
