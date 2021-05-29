@@ -11,7 +11,7 @@ public interface Point<P extends Point<P>> {
 
     Stream<P> neighbors();
 
-    default Stream<P> neighbors(Predicate<P> predicate) {
+    default Stream<P> neighbors(final Predicate<P> predicate) {
         return neighbors().filter(predicate);
     }
 }
