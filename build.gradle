@@ -116,7 +116,7 @@ java {
 
 pitest {
     targetClasses.set(['com.nelkinda.training.gameoflife.*'])
-    pitestVersion.set('1.5.2')
+    pitestVersion.set('1.6.6')
     timestampedReports.set(false)
     testPlugin.set('junit5')
     outputFormats.set(['XML', 'HTML'])
